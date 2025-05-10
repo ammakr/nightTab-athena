@@ -1,0 +1,69 @@
+:root {
+  --showcase-padding: 4em;
+}
+
+.showcase {
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--z-index-showcase);
+}
+
+.showcase {
+  display: grid;
+  grid-template-columns: 32em 1fr;
+  grid-template-areas:
+    "side content";
+}
+
+.showcase-side {
+  padding: var(--showcase-padding);
+  padding-right: calc(var(--showcase-padding) / 2);
+  grid-area: side;
+  position: sticky;
+  top: var(--showcase-padding);
+  display: grid;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  direction: rtl;
+}
+
+.showcase-side .showcase-control {
+  direction: ltr;
+}
+
+.showcase-content {
+  padding: var(--showcase-padding);
+  padding-left: calc(var(--showcase-padding) / 2);
+  grid-area: content;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.showcase-content {
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  gap: calc(var(--showcase-padding) / 2);
+}
+
+.showcase-column {}
+
+.showcase-type h1,
+.showcase-type h2,
+.showcase-type h3,
+.showcase-type h4,
+.showcase-type h5,
+.showcase-type h6 {
+  margin-bottom: 0.5em;
+  white-space: nowrap;
+}
+
+.showcase-type,
+.showcase-icon {
+  flex-basis: 100%;
+}
+
+.showcase-icon .icon {
+  font-size: 1em;
+}
