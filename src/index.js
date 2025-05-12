@@ -1,27 +1,44 @@
-import { component } from './component';
+import { component } from "./component";
+import { APP_NAME } from "./constant";
+import AthenaConfig from "./athena.json";
 
-import { APP_NAME } from './constant';
+console.log(
+  APP_NAME + " version:",
+  component.version.number,
+  component.version.name
+);
 
-console.log(APP_NAME + ' version:', component.version.number, component.version.name);
+function initializeApp() {
+  component.data.init();
 
-component.data.init();
+  component.theme.init();
 
-component.theme.init();
+  component.layout.init();
 
-component.layout.init();
+  component.toolbar.init();
 
-component.toolbar.init();
+  component.header.init();
 
-component.header.init();
+  component.group.init();
 
-component.group.init();
+  component.bookmark.init();
 
-component.bookmark.init();
+  component.groupAndBookmark.init();
 
-component.groupAndBookmark.init();
+  component.pageLock.init();
 
-component.pageLock.init();
+  component.keyboard.init();
+  // component.menu.open();
+}
 
-component.keyboard.init();
+if (localStorage.getItem("initialized") !== "true") {
+  const configString = JSON.stringify(AthenaConfig);
+  localStorage.setItem("initialized", "true");
+  localStorage.setItem("nightTab", configString);
 
-// component.menu.open();
+  setTimeout(() => {
+    initializeApp();
+  }, 200);
+} else {
+  initializeApp();
+}
